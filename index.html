@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyper-Drive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">HYPER-DRIVE</div>
+        <nav>
+            <a href="#" onclick="showPage('garage')">GARAGE</a>
+            <a href="#" onclick="showPage('compare')">COMPARE</a>
+            <a href="#" onclick="showPage('gallery')">GALLERY</a>
+        </nav>
+    </header>
+
+    <main id="garage-page">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>KOENIGSEGG JESKO</h1>
+                <p>300+ MPH | 1600 HP | PURE ADRENALINE</p>
+                <button class="btn-main" onclick="showSpecs('Koenigsegg Jesko')">EXPLORE SPECS</button>
+            </div>
+        </section>
+
+        <div class="search-container">
+            <input type="text" id="car-search" placeholder="SEARCH GARAGE..." onkeyup="filterCars()">
+            <button class="filter-btn" id="fav-filter" onclick="toggleFavFilter()">SHOW FAVORITES</button>
+        </div>
+
+        <h2 class="section-title">CURRENT INVENTORY</h2>
+        <section id="car-grid" class="car-grid"></section>
+    </main>
+
+    <main id="compare-page" style="display:none;">
+        <h2 class="section-title">HEAD TO HEAD</h2>
+        <div style="text-align:center; margin-bottom: 20px;">
+            <button id="race-btn" class="btn-main" onclick="startRace()">START RACE</button>
+        </div>
+        <div class="compare-container">
+            <div class="compare-slot">
+                <select id="select-1" onchange="updateComparison()"></select>
+                <div id="display-1" class="compare-card"></div>
+            </div>
+            <div class="vs-divider">VS</div>
+            <div class="compare-slot">
+                <select id="select-2" onchange="updateComparison()"></select>
+                <div id="display-2" class="compare-card"></div>
+            </div>
+        </div>
+    </main>
+
+    <main id="gallery-page" style="display:none;">
+        <h2 class="section-title">SHOTS FROM THE STREETS</h2>
+        <div class="masonry-wrapper">
+            <div id="masonry-grid" class="masonry-grid"></div>
+        </div>
+    </main>
+
+    <div id="spec-modal" class="modal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-img" src="" alt="Car Image">
+                </div>
+                <div class="modal-info">
+                    <h1 id="modal-car-name">CAR NAME</h1>
+                    <div class="pr-display">
+                        PR <span id="modal-pr">000</span>
+                        <span id="mod-status"></span>
+                    </div>
+                    <hr style="border: 1px solid #333; margin: 20px 0;">
+                    <div id="modal-car-stats"></div>
+                    
+                    <button id="tune-btn" class="btn-main" style="background: #00ff6a; color: black; margin-top: 15px;">
+                        UPGRADE PERFORMANCE (+10 PR)
+                    </button>
+                    
+                    <button class="btn-main" style="margin-top:20px" onclick="closeModal()">BACK TO GARAGE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+               <p>more cars are yet to be added!</p>
+    <script src="script.js"></script>
+</body>
+</html>
