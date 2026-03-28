@@ -1,3 +1,14 @@
+/* Apply the wrench to the whole site */
+html, body {
+    cursor: url('icons8-wrench-50.png') 16 16, auto;
+}
+
+/* Ensure it stays the wrench when hovering over interactive elements */
+a, button, .car-card, .heart-icon, #pass-input {
+    cursor: url('icons8-wrench-50.png') 16 16, pointer !important;
+}
+
+
 :root {
     --nfs-blue: #00d2ff;
     --nfs-orange: #ff9a00;
@@ -12,24 +23,6 @@ body {
     font-family: 'Arial Black', sans-serif;
     margin: 0;
     text-transform: uppercase;
-}
-
-p{
-    align-content:center ;
-    color: #333;
-}
-
-.hero {
-    height: 60vh; /* Increased height to make it more visible */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* CHANGE THE NAME BELOW TO MATCH YOUR FILE */
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('forza-motorsport-8-koenigsegg-jesko-2023-games-xbox-series-3840x2160-8204.jpg'); 
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    border-bottom: 2px solid var(--nfs-blue);
 }
 
 header {
@@ -47,43 +40,102 @@ header {
 
 .logo { font-style: italic; font-size: 1.8rem; text-shadow: 0 0 10px var(--nfs-blue); }
 
-nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: bold; }
+nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: bold; transition: 0.3s; }
 nav a:hover { color: var(--nfs-blue); }
 
-/* Search & Filter */
-.search-container { text-align: center; padding: 20px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-#car-search { background: #111; border: 2px solid var(--nfs-blue); color: white; padding: 12px; width: 300px; border-radius: 50px; outline: none; font-family: inherit; }
-.filter-btn { background: #222; color: white; border: 1px solid #444; padding: 10px 20px; cursor: pointer; border-radius: 50px; font-family: inherit; }
-.filter-btn.active { border-color: #ff0072; color: #ff0072; box-shadow: 0 0 10px #ff0072; }
+.hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('forza-motorsport-8-koenigsegg-jesko-2023-games-xbox-series-3840x2160-8204.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    border-bottom: 3px solid var(--nfs-blue);
+}
 
-/* Grid & Cards */
+.hero-content h1 { font-size: clamp(2rem, 8vw, 4rem); margin: 0; }
+
+.search-container { text-align: center; padding: 20px; display: flex; justify-content: center; gap: 15px; }
+#car-search { background: #111; border: 2px solid var(--nfs-blue); color: white; padding: 12px 25px; width: 350px; border-radius: 50px; outline: none; font-family: inherit; }
+.filter-btn { background: #222; color: white; border: 1px solid #444; padding: 10px 25px; cursor: pointer; border-radius: 50px; font-family: inherit; transition: 0.3s; }
+.filter-btn.active { border-color: #ff0072; color: #ff0072; box-shadow: 0 0 15px #ff0072; }
+
 .car-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 40px; }
 .car-card { background: var(--glass); border-left: 5px solid var(--nfs-blue); position: relative; transition: 0.3s; overflow: hidden; cursor: pointer; }
 .car-card:hover { transform: scale(1.03) skewX(-2deg); }
-.car-card img { width: 100%; height: 200px; object-fit: cover; }
-.car-card.is-favorite { border-left-color: #ff0072 !important; box-shadow: inset 0 0 15px rgba(255, 0, 114, 0.2); }
+.car-card img { width: 100%; height: 220px; object-fit: cover; }
+.car-card.is-favorite { border-left-color: #ff0072 !important; box-shadow: inset 0 0 20px rgba(255, 0, 114, 0.2); }
 
-.pr-badge { position: absolute; top: 10px; right: -5px; background: var(--nfs-orange); color: black; padding: 5px 12px; font-weight: 900; transform: skewX(-15deg); }
-.heart-icon { position: absolute; bottom: 10px; right: 10px; font-size: 1.5rem; color: #444; cursor: pointer; transition: 0.3s; z-index: 10; }
+.pr-badge { position: absolute; top: 10px; right: -5px; background: var(--nfs-orange); color: black; padding: 5px 15px; font-weight: 900; transform: skewX(-15deg); box-shadow: 2px 2px 0 #fff; }
+.heart-icon { position: absolute; bottom: 15px; right: 15px; font-size: 1.8rem; color: #333; cursor: pointer; transition: 0.3s; z-index: 5; }
 .heart-icon.active { color: #ff0072; text-shadow: 0 0 10px #ff0072; }
 
-/* Masonry Gallery */
-.masonry-wrapper { padding: 40px; }
-.masonry-grid { column-count: 3; column-gap: 15px; }
-.masonry-item { display: inline-block; width: 100%; margin-bottom: 15px; border: 1px solid #333; cursor: pointer; filter: grayscale(0.5); transition: 0.4s; }
-.masonry-item:hover { filter: grayscale(0); border-color: var(--nfs-blue); }
-
-/* Tuning Effects */
-@keyframes pr-glow { 0% { transform: scale(1); } 50% { color: #00ff6a; transform: scale(1.2); } 100% { transform: scale(1); } }
-.tuning-up { animation: pr-glow 0.5s ease-in-out; display: inline-block; }
-.mod-tag { background: #00ff6a; color: black; font-size: 0.7rem; padding: 2px 8px; margin-left: 10px; border-radius: 3px; }
-
-/* General UI */
 .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; }
 .modal-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); }
-.modal-content { position: relative; background: #000; margin: 5vh auto; width: 85%; max-width: 1100px; border: 2px solid var(--nfs-blue); border-radius: 15px; overflow: hidden; }
+.modal-content { position: relative; background: #000; margin: 5vh auto; width: 85%; max-width: 1100px; border: 2px solid var(--nfs-blue); border-radius: 15px; overflow: hidden; animation: zoom 0.3s; }
 .modal-body { display: flex; flex-wrap: wrap; }
-.modal-image-container { flex: 1.2; min-width: 400px; }
-.modal-info { flex: 1; padding: 40px; }
+.modal-image-container { flex: 1.2; min-width: 400px; height: 500px; overflow: hidden; }
+.modal-image-container img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.modal-info { flex: 1; padding: 40px; background: linear-gradient(135deg, #111, #000); }
+.pr-display { font-size: 2.5rem; color: var(--nfs-orange); font-weight: 900; }
+.spec-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #222; font-size: 0.9rem; }
+.spec-row strong { color: var(--nfs-blue); }
 
-.btn-main { background: var(--nfs-red); color: white; border: none; padding: 12px 40px; font-weight: bold; cursor: pointer; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+.close-btn { position: absolute; right: 20px; top: 10px; font-size: 40px; color: #555; cursor: pointer; z-index: 10; }
+.btn-main { background: var(--nfs-red); color: white; border: none; padding: 12px 40px; font-weight: bold; cursor: pointer; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); transition: 0.2s; }
+
+.masonry-wrapper { padding: 40px; }
+.masonry-grid { column-count: 3; column-gap: 15px; }
+.masonry-item { display: inline-block; width: 100%; margin-bottom: 15px; border: 1px solid #333; cursor: pointer; filter: grayscale(0.6); transition: 0.4s; }
+.masonry-item:hover { filter: grayscale(0); border-color: var(--nfs-blue); transform: scale(1.02); }
+.masonry-item img { width: 100%; display: block; }
+
+.compare-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 40px 20px;
+    min-height: 600px;
+    overflow-x: auto;
+}
+
+.compare-slot {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vs-divider {
+    font-size: 3rem;
+    color: var(--nfs-red);
+    text-shadow: 0 0 15px var(--nfs-red);
+    font-style: italic;
+    align-self: center;
+    margin: 0 10px;
+}
+
+.compare-card {
+    background: var(--glass);
+    padding: 15px;
+    border: 2px solid #333;
+    width: 100%;
+    text-align: center;
+    transition: 0.5s;
+}
+
+.compare-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+@keyframes zoom { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@media (max-width: 768px) { .masonry-grid { column-count: 2; } .modal-image-container { min-width: 100%; height: 300px; } .compare-container { flex-direction: column; align-items: center; } }
